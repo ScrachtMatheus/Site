@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinhoo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: #173d2b;
+        --leaf: #2e6b3f;
+        --harvest: #f2bd42;
+        --paper: #fbf5e8;
+        --clay: #d96c40;
+      }
+
+      html { scroll-behavior: smooth; }
+      body {
+        width: 100%;
+        margin: 0;
+        font-family: "Work Sans", sans-serif;
+        color: var(--ink);
+        overflow-x: hidden;
+      }
+
+      .site-header {
+        background: rgba(251, 245, 232, 0.94);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(23, 61, 43, 0.12);
+      }
+
+      .hero-orb {
+        position: absolute;
+        width: 29rem;
+        height: 29rem;
+        border-radius: 999px;
+        background: #f2bd42;
+        right: -10rem;
+        top: -10rem;
+        opacity: .92;
+      }
+
+      .dot-field {
+        background-image: radial-gradient(rgba(23, 61, 43, 0.18) 1.2px, transparent 1.2px);
+        background-size: 15px 15px;
+      }
+
+      .hero-image-shape {
+        border-radius: 48% 52% 38% 62% / 43% 42% 58% 57%;
+        box-shadow: 16px 16px 0 #d96c40;
+      }
+
+      .about-image-shape {
+        border-radius: 36px 36px 104px 36px;
+      }
+
+      .learning-card {
+        transition: transform .25s ease, box-shadow .25s ease;
+      }
+
+      .learning-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 22px 35px rgba(23, 61, 43, .14);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color .2s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background: var(--clay);
+        transition: width .2s ease;
+      }
+
+      .nav-link:hover::after,
+      .nav-link:focus-visible::after { width: 100%; }
+
+      .focus-ring:focus-visible {
+        outline: 3px solid #d96c40;
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 767px) {
+        .hero-orb { width: 20rem; height: 20rem; right: -9rem; top: -8rem; }
+        .mobile-menu-open { display: flex !important; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition: none !important; animation: none !important; }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  </head>
+  <body class="w-full min-h-screen" style="background: rgb(251, 245, 232);">
+    <header class="site-header sticky top-0 z-50 w-full">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
+        <a href="#inicio" class="focus-ring rounded-lg" aria-label="Ir para o início">
+          <span class="canva-text text-2xl font-extrabold tracking-tight" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 26px;">Agrinho Atividade</span>
+        </a>
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+          <a class="canva-link nav-link focus-ring rounded text-sm font-semibold" href="#inicio" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">Início</a>
+          <a class="canva-link nav-link focus-ring rounded text-sm font-semibold" href="#sobre" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">O projeto</a>
+          <a class="canva-link nav-link focus-ring rounded text-sm font-semibold" href="#aprendizado" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">Aprendizado</a>
+          <a class="canva-link nav-link focus-ring rounded text-sm font-semibold" href="#participar" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">Participe</a>
+        </nav>
+        <button id="menu-toggle" type="button" class="focus-ring rounded-lg p-2 md:hidden" aria-controls="mobile-menu" aria-expanded="false">
+          <i data-lucide="menu" aria-hidden="true"></i>
+          <span class="sr-only">Abrir menu de navegação</span>
+        </button>
+      </div>
+      <nav id="mobile-menu" class="hidden flex-col gap-4 border-t border-[#173d2b]/10 px-5 py-5 md:hidden" aria-label="Navegação para telemóvel">
+        <a class="canva-link focus-ring rounded font-semibold" href="#inicio" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">Início</a>
+        <a class="canva-link focus-ring rounded font-semibold" href="#sobre" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">O projeto</a>
+        <a class="canva-link focus-ring rounded font-semibold" href="#aprendizado" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">Aprendizado</a>
+        <a class="canva-link focus-ring rounded font-semibold" href="#participar" style="color: rgb(23, 61, 43); font-weight: 600; font-style: normal; font-size: 16px;">Participe</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="relative isolate w-full overflow-hidden px-5 py-16 md:px-8 md:py-24">
+        <div class="hero-orb -z-10"></div>
+        <div class="dot-field absolute bottom-0 left-0 -z-10 h-36 w-36 opacity-60"></div>
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+          <div class="max-w-2xl">
+            <p class="canva-text mb-5 inline-flex rounded-full px-4 py-2 text-sm font-bold uppercase tracking-[0.13em]" style="background: rgb(242, 189, 66); color: rgb(23, 61, 43); font-weight: 700; font-style: normal; font-size: 14px;">Cultivando ideias</p>
+            <h1 class="canva-text max-w-xl font-extrabold leading-[0.98] tracking-tight" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 32px;">Do campo para o futuro.</h1>
+            <p class="canva-text mt-7 max-w-lg text-lg leading-relaxed" style="color: rgb(49, 89, 66); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.6;">Agrinhoo é um espaço para descobrir, aprender e valorizar as conexões que fazem a vida florescer.</p>
+            <a class="canva-button focus-ring mt-9 inline-flex items-center gap-2 rounded-full px-6 py-4 font-bold shadow-lg transition-transform hover:-translate-y-1" href="#aprendizado" style="background: rgb(46, 107, 63); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Conheça as iniciativas</a>
+          </div>
+          <div class="relative mx-auto w-full max-w-lg py-7">
+            <div class="absolute -left-4 top-0 h-24 w-24 rounded-full border-[14px] border-[#f2bd42]"></div>
+            <img loading="lazy" class="canva-image hero-image-shape relative aspect-[5/4] w-full object-cover" src="https://images.pexels.com/photos/2135677/pexels-photo-2135677.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Pessoa caminhando por uma plantação verde">
+            <div class="canva-banner absolute -bottom-2 -left-2 max-w-[15rem] rounded-2xl px-5 py-4 shadow-lg" style="background: rgb(255, 255, 255); color: rgb(23, 61, 43);">
+              <p class="canva-text text-sm font-bold leading-snug" style="color: rgb(23, 61, 43); font-weight: 700; font-style: normal; font-size: 16px;">Aprender com a terra é cuidar do amanhã.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" class="w-full px-5 py-16 md:px-8 md:py-24">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[.92fr_1.08fr]">
+          <div class="relative order-2 lg:order-1">
+            <div class="absolute -bottom-6 -right-5 h-32 w-32 rounded-full bg-[#f2bd42]"></div>
+            <img loading="lazy" class="canva-image about-image-shape relative aspect-[4/3] w-full object-cover shadow-xl" src="https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Crianças explorando uma horta comunitária">
+          </div>
+          <div class="order-1 lg:order-2">
+            <p class="canva-text mb-4 text-sm font-extrabold uppercase tracking-[0.15em]" style="color: rgb(217, 108, 64); font-weight: 800; font-style: normal; font-size: 14px;">Nosso olhar</p>
+            <h2 class="canva-text max-w-xl font-extrabold leading-tight tracking-tight" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 24px;">Conhecimento que nasce perto da natureza.</h2>
+            <p class="canva-text mt-6 max-w-xl text-lg leading-relaxed" style="color: rgb(49, 89, 66); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.6;">O Agrinhoo aproxima pessoas, saberes e paisagens. Uma proposta educativa para olhar o campo com curiosidade, respeito e vontade de transformar.</p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="canva-card rounded-2xl p-5" style="background: rgb(228, 239, 217); color: rgb(23, 61, 43);">
+                <i data-lucide="sprout" class="mb-3" aria-hidden="true"></i>
+                <p class="canva-text font-bold leading-snug" style="color: rgb(23, 61, 43); font-weight: 700; font-style: normal; font-size: 16px;">Experiências que despertam a curiosidade.</p>
+              </div>
+              <div class="canva-card rounded-2xl p-5" style="background: rgb(255, 240, 200); color: rgb(23, 61, 43);">
+                <i data-lucide="book-open" class="mb-3" aria-hidden="true"></i>
+                <p class="canva-text font-bold leading-snug" style="color: rgb(23, 61, 43); font-weight: 700; font-style: normal; font-size: 16px;">Conversas que valorizam cada território.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="aprendizado" class="canva-section w-full px-5 py-16 md:px-8 md:py-24" style="background: rgb(232, 240, 223);">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-2xl">
+            <p class="canva-text mb-4 text-sm font-extrabold uppercase tracking-[0.15em]" style="color: rgb(217, 108, 64); font-weight: 800; font-style: normal; font-size: 14px;">Caminhos para explorar</p>
+            <h2 class="canva-text font-extrabold leading-tight tracking-tight" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 24px;">O que cresce quando a gente aprende junto.</h2>
+            <p class="canva-text mt-5 text-lg leading-relaxed" style="color: rgb(49, 89, 66); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.6;">Três pontos de partida para transformar observação em descoberta e descoberta em atitude.</p>
+          </div>
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <article class="canva-card learning-card rounded-[1.7rem] p-7" style="background: rgb(255, 253, 247); color: rgb(23, 61, 43);">
+              <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f2bd42] text-[#173d2b]">
+                <i data-lucide="wheat" aria-hidden="true"></i>
+              </div>
+              <h3 class="canva-text font-extrabold" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 19px;">Campo vivo</h3>
+              <p class="canva-text mt-4 leading-relaxed" style="color: rgb(49, 89, 66); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Reconhecer os ciclos, os alimentos e as pessoas que tornam o campo um lugar cheio de vida.</p>
+            </article>
+            <article class="canva-card learning-card rounded-[1.7rem] p-7" style="background: rgb(255, 253, 247); color: rgb(23, 61, 43);">
+              <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#d96c40] text-white">
+                <i data-lucide="lightbulb" aria-hidden="true"></i>
+              </div>
+              <h3 class="canva-text font-extrabold" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 19px;">Ideias em movimento</h3>
+              <p class="canva-text mt-4 leading-relaxed" style="color: rgb(49, 89, 66); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Criar perguntas, compartilhar descobertas e imaginar novas formas de se relacionar com o mundo.</p>
+            </article>
+            <article class="canva-card learning-card rounded-[1.7rem] p-7" style="background: rgb(255, 253, 247); color: rgb(23, 61, 43);">
+              <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2e6b3f] text-white">
+                <i data-lucide="recycle" aria-hidden="true"></i>
+              </div>
+              <h3 class="canva-text font-extrabold" style="color: rgb(23, 61, 43); font-weight: 800; font-style: normal; font-size: 19px;">Cuidado coletivo</h3>
+              <p class="canva-text mt-4 leading-relaxed" style="color: rgb(49, 89, 66); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Perceber que escolhas cotidianas também ajudam a construir um ambiente mais equilibrado.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="participar" class="w-full px-5 py-16 md:px-8 md:py-24">
+        <div class="canva-panel mx-auto max-w-7xl overflow-hidden rounded-[2rem] px-7 py-12 md:px-14 md:py-16" style="background: rgb(23, 61, 43); color: rgb(255, 255, 255);">
+          <div class="grid items-center gap-10 lg:grid-cols-[1.25fr_.75fr]">
+            <div>
+              <p class="canva-text mb-4 text-sm font-extrabold uppercase tracking-[0.15em]" style="color: rgb(242, 189, 66); font-weight: 800; font-style: normal; font-size: 14px;">Vamos cultivar juntos?</p>
+              <h2 class="canva-text max-w-2xl font-extrabold leading-tight tracking-tight" style="color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 24px;">Todo grande futuro começa com uma pequena semente.</h2>
+              <p class="canva-text mt-5 max-w-xl text-lg leading-relaxed" style="color: rgb(220, 235, 214); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.6;">Explore o Agrinhoo e encontre inspiração para aprender, conversar e cuidar do lugar onde vivemos.</p>
+            </div>
+            <div class="flex justify-start lg:justify-end">
+              <a class="canva-button focus-ring inline-flex items-center gap-2 rounded-full px-6 py-4 font-bold transition-transform hover:-translate-y-1" href="#inicio" style="background: rgb(242, 189, 66); color: rgb(23, 61, 43); font-weight: 700; font-style: normal; font-size: 16px;">Voltar ao início</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="canva-footer w-full px-5 py-10 md:px-8" style="background: rgb(16, 45, 32); color: rgb(255, 255, 255);">
+      <div class="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="canva-text text-xl font-extrabold" style="color: rgb(242, 189, 66); font-weight: 800; font-style: normal; font-size: 16px;">Agrinho Atividade</p>
+          <p class="canva-text mt-2 text-sm" style="color: rgb(220, 235, 214); font-weight: 400; font-style: normal; font-size: 16px;">Uma jornada educativa para celebrar os saberes do campo.</p>
+        </div>
+        <a class="canva-link focus-ring rounded text-sm font-bold" href="#inicio" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Ir para o início ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+
+        const toggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        toggle.addEventListener("click", function () {
+          const isOpen = mobileMenu.classList.toggle("mobile-menu-open");
+          toggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.remove("mobile-menu-open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
